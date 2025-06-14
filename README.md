@@ -27,9 +27,7 @@ This is a **Windows-optimized fork** of the original [AWS Labs EKS Node Viewer](
 
 ### Option 2: PowerShell Build (Advanced Users) 🔧
 
-:::alert{type="warning"}
-**Note:** Building from source requires Go installation and takes several minutes to download dependencies. For most users, the pre-built release (Option 1) is recommended.
-:::
+> **⚠️ Warning:** Building from source requires Go installation and takes several minutes to download dependencies. For most users, the pre-built release (Option 1) is recommended.
 
 **Prerequisites:**
 - Go 1.24.2 or later
@@ -56,11 +54,6 @@ go version
 git clone https://github.com/brunokktro/eks-node-viewer-for-windows.git
 cd eks-node-viewer-for-windows
 .\build.ps1
-```
-
-### Option 3: Go Install (For Go Developers) 🐹
-```cmd
-go install github.com/brunokktro/eks-node-viewer-for-windows/cmd/eks-node-viewer@latest
 ```
 
 📖 **For detailed Windows setup instructions, troubleshooting, and Go installation guide, see [WINDOWS.md](WINDOWS.md)**

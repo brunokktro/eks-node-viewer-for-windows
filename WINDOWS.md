@@ -110,14 +110,12 @@ If `go version` returns "command not found":
 
 ### Method 2: Build from Source (Advanced Users) 🔧
 
-:::alert{type="warning"}
-**Important:** Building from source requires Go installation and can take 5-10 minutes to download all dependencies. Most users should use the pre-built release above.
-
-**Prerequisites for building:**
-- Go 1.24.2 or later (see Go installation steps below)
-- Git
-- 5-10 minutes for initial build (downloads many dependencies)
-:::
+> **⚠️ Important:** Building from source requires Go installation and can take 5-10 minutes to download all dependencies. Most users should use the pre-built release above.
+> 
+> **Prerequisites for building:**
+> - Go 1.24.2 or later (see Go installation steps below)
+> - Git
+> - 5-10 minutes for initial build (downloads many dependencies)
 
 **Only proceed with this method if:**
 - You want to modify the source code
@@ -130,7 +128,6 @@ If `go version` returns "command not found":
 |--------|----------|---------------|---------------|
 | **Pre-built Release** | Most users, workshops, quick start | 1-2 minutes | None |
 | **Build from Source** | Developers, customization | 5-10 minutes | Go installation |
-| **Go Install** | Go developers | 3-5 minutes | Go installation |
 
 **💡 Recommendation:** Start with the pre-built release. You can always build from source later if needed.
 
@@ -216,10 +213,10 @@ style=#2E91D2,#ffff00,#D55E00
 ### Basic Usage
 ```cmd
 # Standard usage
-eks-node-viewer.exe
+.\eks-node-viewer.exe
 
 # With specific options
-eks-node-viewer.exe --resources cpu,memory --extra-labels topology.kubernetes.io/zone
+.\eks-node-viewer.exe --resources cpu,memory --extra-labels topology.kubernetes.io/zone
 ```
 
 ### PowerShell Usage
@@ -236,19 +233,19 @@ $env:AWS_REGION = "us-west-2"
 ### Advanced Examples
 ```cmd
 # Karpenter nodes only
-eks-node-viewer.exe --node-selector karpenter.sh/nodepool
+.\eks-node-viewer.exe --node-selector karpenter.sh/nodepool
 
 # Display both CPU and Memory Usage
-eks-node-viewer.exe --resources cpu,memory
+.\eks-node-viewer.exe --resources cpu,memory
 
 # Display extra labels (AZ)
-eks-node-viewer.exe --extra-labels topology.kubernetes.io/zone
+.\eks-node-viewer.exe --extra-labels topology.kubernetes.io/zone
 
 # Sort by CPU usage in descending order
-eks-node-viewer.exe --node-sort=eks-node-viewer/node-cpu-usage=dsc
+.\eks-node-viewer.exe --node-sort=eks-node-viewer/node-cpu-usage=dsc
 
 # Disable pricing (faster startup)
-eks-node-viewer.exe --disable-pricing
+.\eks-node-viewer.exe --disable-pricing
 ```
 
 ## Windows-Specific Features
