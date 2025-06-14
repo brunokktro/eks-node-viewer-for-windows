@@ -18,22 +18,52 @@ This is a **Windows-optimized fork** of the original [AWS Labs EKS Node Viewer](
 
 ## 🚀 Quick Start for Windows
 
-### Option 1: PowerShell Build (Recommended)
+### Option 1: Pre-built Release (Recommended) ⚡
+**Fastest and easiest way to get started:**
+
+1. Download the latest Windows binary from [Releases](https://github.com/brunokktro/eks-node-viewer-for-windows/releases/tag/v1.0.0-windows)
+2. Extract `eks-node-viewer.exe` from the ZIP file
+3. Run directly: `.\eks-node-viewer.exe`
+
+### Option 2: PowerShell Build (Advanced Users) 🔧
+
+:::alert{type="warning"}
+**Note:** Building from source requires Go installation and takes several minutes to download dependencies. For most users, the pre-built release (Option 1) is recommended.
+:::
+
+**Prerequisites:**
+- Go 1.24.2 or later
+- Git
+
+**Install Go using Chocolatey (Recommended):**
 ```powershell
+# Install Chocolatey (if not already installed)
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+# Install Go
+choco install golang -y
+
+# Close and reopen PowerShell as Administrator, then verify
+go version
+```
+
+**Build from source:**
+```powershell
+# Ensure Go is installed first
+go version
+
+# Clone and build
 git clone https://github.com/brunokktro/eks-node-viewer-for-windows.git
 cd eks-node-viewer-for-windows
 .\build.ps1
 ```
 
-### Option 2: Go Install
+### Option 3: Go Install (For Go Developers) 🐹
 ```cmd
 go install github.com/brunokktro/eks-node-viewer-for-windows/cmd/eks-node-viewer@latest
 ```
 
-### Option 3: Download Binary
-Download the latest Windows binary from [Releases](https://github.com/brunokktro/eks-node-viewer-for-windows/releases)
-
-📖 **For detailed Windows instructions, see [WINDOWS.md](WINDOWS.md)**
+📖 **For detailed Windows setup instructions, troubleshooting, and Go installation guide, see [WINDOWS.md](WINDOWS.md)**
 
 ## About
 

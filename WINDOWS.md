@@ -5,10 +5,79 @@ This guide provides Windows-specific instructions for installing and using EKS N
 ## Prerequisites
 
 ### Required Software
-- **Go 1.24.2 or later** - [Download from golang.org](https://golang.org/downloads/)
+- **Go 1.24.2 or later** - See detailed installation instructions below
 - **Git** - [Download from git-scm.com](https://git-scm.com/downloads)
 - **AWS CLI v2** - [Installation Guide](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 - **kubectl** - [Installation Guide](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/)
+
+### Go Installation (Detailed Steps)
+
+#### Method 1: Using Chocolatey (Recommended)
+
+1. **Install Chocolatey** (if not already installed):
+   ```powershell
+   # Run PowerShell as Administrator
+   Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+   ```
+
+2. **Install Go using Chocolatey**:
+   ```powershell
+   # Run PowerShell as Administrator
+   choco install golang -y
+   ```
+
+3. **Update Environment Variables**:
+   ```powershell
+   # Import Chocolatey profile to refresh environment
+   Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
+   ```
+
+4. **Close and Reopen PowerShell as Administrator**:
+   - **Important**: You must close the current PowerShell window and open a new one as Administrator
+   - This is required for the PATH changes to take effect
+
+5. **Verify Installation**:
+   ```powershell
+   go version
+   ```
+   Expected output: `go version go1.24.4 windows/amd64` (or similar)
+
+#### Method 2: Manual Installation
+
+1. **Download Go**:
+   - Visit [golang.org/downloads](https://golang.org/downloads/)
+   - Download the Windows installer (.msi file)
+
+2. **Install Go**:
+   - Run the downloaded .msi file
+   - Follow the installation wizard
+   - Go will be installed to `C:\Program Files\Go` by default
+
+3. **Verify Installation**:
+   ```powershell
+   # Close and reopen PowerShell, then run:
+   go version
+   ```
+
+#### Troubleshooting Go Installation
+
+If `go version` returns "command not found":
+
+1. **Check if Go is installed**:
+   ```powershell
+   Get-ChildItem "C:\Program Files\Go\bin" -ErrorAction SilentlyContinue
+   ```
+
+2. **Manually add to PATH** (temporary fix):
+   ```powershell
+   $env:PATH += ";C:\Program Files\Go\bin"
+   go version
+   ```
+
+3. **Permanent PATH fix**:
+   - Open System Properties → Advanced → Environment Variables
+   - Add `C:\Program Files\Go\bin` to your PATH variable
+   - Restart PowerShell
 
 ### Optional Software
 - **Windows Terminal** - Recommended for better color support and Unicode rendering
@@ -17,35 +86,78 @@ This guide provides Windows-specific instructions for installing and using EKS N
 
 ## Installation Methods
 
-### Method 1: Pre-built Binary (Recommended)
+### Method 1: Pre-built Release (Recommended) ⚡
 
-1. Download the latest Windows binary from [GitHub Releases](https://github.com/awslabs/eks-node-viewer/releases)
-2. Extract `eks-node-viewer.exe` to a directory in your PATH
-3. Open Command Prompt or PowerShell and verify installation:
-   ```cmd
-   eks-node-viewer --version
+**This is the fastest and most reliable way to get EKS Node Viewer on Windows:**
+
+1. **Download the release:**
+   - Go to [Releases](https://github.com/brunokktro/eks-node-viewer-for-windows/releases/tag/v1.0.0-windows)
+   - Download `eks-node-viewer-windows-amd64.zip`
+
+2. **Extract and run:**
+   ```powershell
+   # Extract the ZIP file
+   Expand-Archive -Path eks-node-viewer-windows-amd64.zip -DestinationPath . -Force
+   
+   # Run the tool
+   .\eks-node-viewer.exe
    ```
 
-### Method 2: Build from Source
+3. **Verify installation:**
+   ```powershell
+   .\eks-node-viewer.exe --version
+   ```
+
+### Method 2: Build from Source (Advanced Users) 🔧
+
+:::alert{type="warning"}
+**Important:** Building from source requires Go installation and can take 5-10 minutes to download all dependencies. Most users should use the pre-built release above.
+
+**Prerequisites for building:**
+- Go 1.24.2 or later (see Go installation steps below)
+- Git
+- 5-10 minutes for initial build (downloads many dependencies)
+:::
+
+**Only proceed with this method if:**
+- You want to modify the source code
+- You need a specific version not available in releases
+- You prefer building from source for security reasons
+
+## Which Installation Method Should I Choose?
+
+| Method | Best For | Time Required | Prerequisites |
+|--------|----------|---------------|---------------|
+| **Pre-built Release** | Most users, workshops, quick start | 1-2 minutes | None |
+| **Build from Source** | Developers, customization | 5-10 minutes | Go installation |
+| **Go Install** | Go developers | 3-5 minutes | Go installation |
+
+**💡 Recommendation:** Start with the pre-built release. You can always build from source later if needed.
 
 #### Using PowerShell (Recommended)
 ```powershell
+# Ensure Go is installed and accessible
+go version
+
 # Clone the repository
-git clone https://github.com/awslabs/eks-node-viewer.git
-cd eks-node-viewer
+git clone https://github.com/brunokktro/eks-node-viewer-for-windows.git
+cd eks-node-viewer-for-windows
 
 # Build using the provided PowerShell script
-.\build.ps1 -Generate -Test
-
-# Or build without tests
 .\build.ps1
+
+# Or build with additional options
+.\build.ps1 -Generate -Test
 ```
 
 #### Using Command Prompt
 ```cmd
+# Ensure Go is installed and accessible
+go version
+
 # Clone the repository
-git clone https://github.com/awslabs/eks-node-viewer.git
-cd eks-node-viewer
+git clone https://github.com/brunokktro/eks-node-viewer-for-windows.git
+cd eks-node-viewer-for-windows
 
 # Build manually
 set CGO_ENABLED=0
@@ -54,7 +166,11 @@ go build -ldflags="-s -w -X main.version=local -X main.builtBy=Windows" -o eks-n
 
 #### Using Go Install
 ```cmd
-go install github.com/awslabs/eks-node-viewer/cmd/eks-node-viewer@latest
+# Ensure Go is installed and accessible
+go version
+
+# Install directly from GitHub
+go install github.com/brunokktro/eks-node-viewer-for-windows/cmd/eks-node-viewer@latest
 ```
 
 ## Configuration
@@ -157,6 +273,30 @@ All file paths use Windows conventions:
 ## Troubleshooting
 
 ### Common Issues
+
+#### "go is not recognized as an internal or external command"
+This is the most common issue when building from source.
+
+**Solution:**
+1. Verify Go is installed:
+   ```powershell
+   Get-ChildItem "C:\Program Files\Go\bin" -ErrorAction SilentlyContinue
+   ```
+
+2. If Go is installed but not recognized:
+   ```powershell
+   # Close current PowerShell and open a new one as Administrator
+   # Then test:
+   go version
+   ```
+
+3. If still not working, manually add to PATH:
+   ```powershell
+   $env:PATH += ";C:\Program Files\Go\bin"
+   go version
+   ```
+
+4. For permanent fix, add `C:\Program Files\Go\bin` to your system PATH environment variable
 
 #### "eks-node-viewer is not recognized as an internal or external command"
 - Ensure the executable is in your PATH
