@@ -2,6 +2,12 @@
 
 This guide provides Windows-specific instructions for installing and using EKS Node Viewer.
 
+## 📸 Windows Demo
+
+![EKS Node Viewer on Windows](docs/images/eks-node-viewer-windows-demo.png)
+
+*eks-node-viewer running on Windows PowerShell with native color support and proper Unicode rendering*
+
 ## Prerequisites
 
 ### Required Software

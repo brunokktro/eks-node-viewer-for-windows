@@ -7,6 +7,12 @@
 
 This is a **Windows-optimized fork** of the original [AWS Labs EKS Node Viewer](https://github.com/awslabs/eks-node-viewer) with enhanced Windows support, PowerShell scripts, and comprehensive Windows documentation.
 
+## 📸 Windows PowerShell Demo
+
+![EKS Node Viewer running on Windows PowerShell](docs/images/eks-node-viewer-windows-demo.png)
+
+*EKS Node Viewer running natively on Windows PowerShell with full color support and Unicode rendering*
+
 ## 🆕 Windows Enhancements
 
 - ✅ **PowerShell Build Scripts** - Native Windows build experience
