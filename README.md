@@ -3,17 +3,17 @@
 [![Go code tests](https://github.com/brunokktro/eks-node-viewer-for-windows/actions/workflows/test.yaml/badge.svg)](https://github.com/brunokktro/eks-node-viewer-for-windows/actions/workflows/test.yaml)
 [![Windows Tests](https://github.com/brunokktro/eks-node-viewer-for-windows/actions/workflows/test-windows.yaml/badge.svg)](https://github.com/brunokktro/eks-node-viewer-for-windows/actions/workflows/test-windows.yaml)
 
-# EKS Node Viewer for Windows 🪟
+# EKS Node Viewer for Windows
 
 This is a **Windows-optimized fork** of the original [AWS Labs EKS Node Viewer](https://github.com/awslabs/eks-node-viewer) with enhanced Windows support, PowerShell scripts, and comprehensive Windows documentation.
 
-## 📸 Windows PowerShell Demo
+## Windows PowerShell screenshot
 
 ![EKS Node Viewer running on Windows PowerShell](docs/images/eks-node-viewer-windows-demo.png)
 
 *EKS Node Viewer running natively on Windows PowerShell with full color support and Unicode rendering*
 
-## 🆕 Windows Enhancements
+## Windows Enhancements
 
 - ✅ **PowerShell Build Scripts** - Native Windows build experience
 - ✅ **Windows Terminal Support** - Optimized for modern Windows terminals
@@ -22,7 +22,7 @@ This is a **Windows-optimized fork** of the original [AWS Labs EKS Node Viewer](
 - ✅ **Windows CI/CD** - GitHub Actions for Windows testing
 - ✅ **Enhanced Error Handling** - Windows-specific troubleshooting
 
-## 🚀 Quick Start for Windows
+## Quick Start for Windows
 
 ### Option 1: Pre-built Release (Recommended) ⚡
 **Fastest and easiest way to get started:**
@@ -62,7 +62,7 @@ cd eks-node-viewer-for-windows
 .\build.ps1
 ```
 
-📖 **For detailed Windows setup instructions, troubleshooting, and Go installation guide, see [WINDOWS.md](WINDOWS.md)**
+**For detailed Windows setup instructions, troubleshooting, and Go installation guide, see [WINDOWS.md](WINDOWS.md)**
 
 ## About
 
@@ -72,7 +72,7 @@ This **Windows-optimized fork** adds comprehensive Windows support while maintai
 
 ![](./.static/screenshot.png)
 
-## 🪟 Windows-Specific Features
+## Windows-Specific Features
 
 - **PowerShell Integration**: Native PowerShell build and deployment scripts
 - **Windows Terminal Optimization**: Enhanced color support and Unicode rendering
