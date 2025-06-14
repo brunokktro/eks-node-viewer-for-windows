@@ -79,29 +79,6 @@ This **Windows-optimized fork** adds comprehensive Windows support while maintai
 - [Containers from the Couch: Workload Consolidation with Karpenter](https://www.youtube.com/watch?v=BnksdJ3oOEs)
 - [AWS re:Invent 2022 - Kubernetes virtually anywhere, for everyone](https://www.youtube.com/watch?v=OB7IZolZk78)
 
-### Installation
-
-#### Windows (Enhanced Support) 🪟
-
-##### PowerShell Build Script (Recommended)
-```powershell
-git clone https://github.com/brunokktro/eks-node-viewer-for-windows.git
-cd eks-node-viewer-for-windows
-.\build.ps1 -Generate -Test
-```
-
-##### Pre-built Binary
-1. Download the latest Windows binary from [GitHub Releases](https://github.com/brunokktro/eks-node-viewer-for-windows/releases)
-2. Extract `eks-node-viewer.exe` to a directory in your PATH
-3. Verify installation:
-   ```cmd
-   .\eks-node-viewer.exe --version
-   ```
-
-**📖 For comprehensive Windows setup instructions, see [WINDOWS.md](WINDOWS.md)**
-
-> **💡 Note:** For macOS/Linux users, please use the [original AWS Labs repository](https://github.com/awslabs/eks-node-viewer) which provides native support for those platforms.
-
 ## Usage
 ```shell
 Usage of ./eks-node-viewer:
@@ -163,31 +140,6 @@ $env:AWS_REGION = "us-west-2"
 - `eks-node-viewer/node-memory-usage` - Memory usage (requests)
 - `eks-node-viewer/node-pods-usage` - Pod usage (requests)
 - `eks-node-viewer/node-ephemeral-storage-usage` - Ephemeral Storage usage (requests)
-
-### Default Options
-You can supply default options to `eks-node-viewer` by creating a file named `.eks-node-viewer` in your home directory and specifying
-options there. The format is `option-name=value` where the option names are the command line flags:
-
-**Unix/Linux/macOS:**
-```text
-# select only Karpenter managed nodes
-node-selector=karpenter.sh/nodepool
-
-# display both CPU and memory
-resources=cpu,memory
-
-# show the zone and nodepool name by default
-extra-labels=topology.kubernetes.io/zone,karpenter.sh/nodepool
-
-# sort so that the newest nodes are first
-node-sort=creation=asc
-
-# change default color style
-style=#2E91D2,#ffff00,#D55E00
-```
-
-**Windows:**
-The config file is located at `%USERPROFILE%\.eks-node-viewer` with the same format as above.
 
 ### Troubleshooting
 
