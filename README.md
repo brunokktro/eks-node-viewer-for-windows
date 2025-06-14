@@ -95,31 +95,12 @@ cd eks-node-viewer-for-windows
 2. Extract `eks-node-viewer.exe` to a directory in your PATH
 3. Verify installation:
    ```cmd
-   eks-node-viewer --version
+   .\eks-node-viewer.exe --version
    ```
-
-##### Go Install
-```cmd
-go install github.com/brunokktro/eks-node-viewer-for-windows/cmd/eks-node-viewer@latest
-```
 
 **📖 For comprehensive Windows setup instructions, see [WINDOWS.md](WINDOWS.md)**
 
-#### Homebrew (macOS/Linux)
-
-```bash
-# Note: Use original repository for Homebrew
-brew tap aws/tap
-brew install eks-node-viewer
-```
-
-#### Manual (All Platforms)
-Please either fetch the latest [release](https://github.com/brunokktro/eks-node-viewer-for-windows/releases) or install manually using:
-```shell
-go install github.com/brunokktro/eks-node-viewer-for-windows/cmd/eks-node-viewer@latest
-```
-
-Note: This will install it to your `GOBIN` directory, typically `~/go/bin` on Unix systems or `%USERPROFILE%\go\bin` on Windows if it is unconfigured.
+> **💡 Note:** For macOS/Linux users, please use the [original AWS Labs repository](https://github.com/awslabs/eks-node-viewer) which provides native support for those platforms.
 
 ## Usage
 ```shell
@@ -150,27 +131,27 @@ Usage of ./eks-node-viewer:
 ### Examples
 ```shell
 # Standard usage
-eks-node-viewer
+.\eks-node-viewer.exe
 
 # Windows PowerShell with environment variables
 $env:AWS_PROFILE = "myprofile"
 $env:AWS_REGION = "us-west-2"
-eks-node-viewer
+.\eks-node-viewer.exe
 
 # Karpenter nodes only
-eks-node-viewer --node-selector karpenter.sh/nodepool
+.\eks-node-viewer.exe --node-selector karpenter.sh/nodepool
 
 # Display both CPU and Memory Usage
-eks-node-viewer --resources cpu,memory
+.\eks-node-viewer.exe --resources cpu,memory
 
 # Display extra labels, i.e. AZ
-eks-node-viewer --extra-labels topology.kubernetes.io/zone
+.\eks-node-viewer.exe --extra-labels topology.kubernetes.io/zone
 
 # Sort by CPU usage in descending order
-eks-node-viewer --node-sort=eks-node-viewer/node-cpu-usage=dsc
+.\eks-node-viewer.exe --node-sort=eks-node-viewer/node-cpu-usage=dsc
 
 # Windows-specific: Disable pricing for faster startup
-eks-node-viewer --disable-pricing
+.\eks-node-viewer.exe --disable-pricing
 ```
 
 ### Computed Labels
